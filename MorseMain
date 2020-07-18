@@ -1,0 +1,55 @@
+"""
+Created on Thu Jul 16 00:41:03 2020
+
+@author: tenor2000
+"""
+MorseCodeDict = {'A':'.-', 'B':'-...',
+'C':'-.-.', 'D':'-..', 'E':'.',
+'F':'..-.', 'G':'--.', 'H':'....',
+'I':'..', 'J':'.---', 'K':'-.-',
+'L':'.-..', 'M':'--', 'N':'-.',
+'O':'---', 'P':'.--.', 'Q':'--.-',
+'R':'.-.', 'S':'...', 'T':'-',
+'U':'..-', 'V':'...-', 'W':'.--',
+'X':'-..-', 'Y':'-.--', 'Z':'--..',
+'1':'.----', '2':'..---', '3':'...--',
+'4':'....-', '5':'.....', '6':'-....',
+'7':'--...', '8':'---..', '9':'----.',
+'0':'-----', ', ':'--..--', '.':'.-.-.-',
+'?':'..--..', '/':'-..-.', '-':'-....-',
+'(':'-.--.', ')':'-.--.-', ' ':''}
+
+inv_MorseCodeDict = {v:k for k, v in MorseCodeDict.items()}
+inv_MorseCodeDict['/'] = ' '
+
+def encryption(message):
+    message = message.upper()
+    output = []
+    for x in message:
+        output.append(MorseCodeDict[x])
+    print(" ".join(output))
+    
+def decryption(message):
+    output = []
+    for x in message.split(" "):
+        output.append(inv_MorseCodeDict[x])
+    print("".join(output))
+    
+def morseCode():
+    while True:
+        question = input("Do you want to [e]ncrypt, [d]ecrypt a coded message, or [q]uit program? ")
+        if question == 'e':
+            message = input("What is the message you wish to encrypt?\n" )
+            encryption(message)
+        elif question == 'd':
+            message = input("What is the message you wish to decrypt?\n" )
+            decryption(message)
+        elif question == 'q':
+            print("Have a nice day!")
+            break
+        else:
+            print("Invalid Response!")
+
+
+if __name__ == '__main__':
+    morseCode()
